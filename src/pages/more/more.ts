@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
-import {LoginPage} from '../login/login';
+import { LoginPage } from '../login/login';
 /**
  * Generated class for the MorePage page.
  *
@@ -15,15 +15,15 @@ import {LoginPage} from '../login/login';
 })
 export class MorePage {
 
-  constructor(public navCtrl: NavController, 
-              public navParams: NavParams,
-              public modalCtrl:ModalController) {
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public modalCtrl: ModalController) {
 
   }
 
-  public showModal() {
+  loginModal() {
     const modal = this.modalCtrl.create(LoginPage);
     modal.present();
   }
-  
+
 }

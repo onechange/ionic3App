@@ -8,11 +8,31 @@
 
   <ion-navbar>
     <ion-title>login</ion-title>
+    <ion-buttons>
+      <button ion-button (click)="dismiss()">
+        <ion-icon name="close" ></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label stacked>电话号码</ion-label>
+      <ion-input type="text" [(ngModel)]="mobile"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>密码</ion-label>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+  </ion-list>
+  <div padding>
+    <button ion-button block (click)="login()">登 录</button>
+  </div>
+  <div padding text-center>
+    <button ion-button outline small>没有账号?</button>
+  </div>
 </ion-content>

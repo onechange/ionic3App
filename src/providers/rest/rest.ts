@@ -12,10 +12,41 @@ import 'rxjs/add/operator/catch';
 */
 @Injectable()
 export class RestProvider {
-
+  
   constructor(public http: HttpClient) {
     console.log('Hello RestProvider Provider');
   }
+    //feed
+    private apiUrlFeeds = 'https://imoocqa.gugujiankong.com/api/feeds/get';
+
+    //account
+    private apiUrlRegister = 'https://imoocqa.gugujiankong.com/api/account/register';
+    private apiUrlLogin = 'https://imoocqa.gugujiankong.com/api/account/login';
+    private apiUrlUserInfo = 'https://imoocqa.gugujiankong.com/api/account/userinfo';
+    private apiUrlUpdateNickName = 'https://imoocqa.gugujiankong.com/api/account/updatenickname';
+    private apiGetUserQuestionList = "https://imoocqa.gugujiankong.com/api/account/getuserquestionlist";
+  
+    //question
+    private apiUrlQuestionSave = 'https://imoocqa.gugujiankong.com/api/question/save';
+    private apiUrlQuestionList = 'https://imoocqa.gugujiankong.com/api/question/list?index=1&number=10';
+    private apiUrlGetQuestion = "https://imoocqa.gugujiankong.com/api/question/get";
+    private apiUrlGetQuestionWithUser = "https://imoocqa.gugujiankong.com/api/question/getwithuser";
+    private apiUrlAnswer = "https://imoocqa.gugujiankong.com/api/question/answer";
+    private apiUrlSaveFavourite = "https://imoocqa.gugujiankong.com/api/question/savefavourite";
+  
+    //notification
+    private apiUrlUserNotifications = "https://imoocqa.gugujiankong.com/api/account/usernotifications";
+    
+    login(mobile,password):Observable<string[]>{
+      return this.getUrlReturn(this.apiUrlLogin + "?mobile=" + mobile + "&password=" + password);
+    }
+
+
+
+
+
+
+
   /**
    *全局获取http请求
    * @cwang 2018/9/16
@@ -27,13 +58,14 @@ export class RestProvider {
   private getUrlReturn(url: string): Observable<string[]> {
     return this.http.get(url)
       .map(this.extraData)
-      .catch(this.handleError);
+      .catch(this.handleError); 
 
   }
 
-  private extraData(res: Response) {
-    let body = res.json();
-    return JSON.parse(body) || {};
+  private extraData(res: string) {
+    // let body = res.json();
+    let json = JSON.parse(res) || {};
+    return json;
   }
 
   private handleError(error: Response | any) {
@@ -45,7 +77,7 @@ export class RestProvider {
     }else{
       errMsg = error.message ? error.message : error.toString();
     }
-    console.error(errMsg);
+    console.log(errMsg);
     return Observable.throw(errMsg);
   }
 
