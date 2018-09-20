@@ -10,7 +10,7 @@ import {
 import { BaseUI } from '../../common/baseui';
 import { RestProvider } from '../../providers/rest/rest';
 import { Storage } from '@ionic/storage';
-
+import { RegistPage } from '../regist/regist';
 /**
  * Generated class for the LoginPage page.
  *
@@ -27,7 +27,7 @@ export class LoginPage extends BaseUI {
 
   mobile: any;
   password: any;
-  errorMessage:any;
+  errorMessage: any;
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public viewCtrl: ViewController,
@@ -35,7 +35,7 @@ export class LoginPage extends BaseUI {
     public rest: RestProvider,
     public toastCtrl: ToastController,
     private storage: Storage
-    ) {
+  ) {
     super();
   }
 
@@ -51,10 +51,10 @@ export class LoginPage extends BaseUI {
           if (x["Status"] == "OK") {
             //处理登录逻辑
             console.log("登录成功");
-            this.storage.set('UserId',x["UserId"]);
+            this.storage.set('UserId', x["UserId"]);
             loading.dismiss();
             this.dismiss();
-            
+
           } else {
             console.log("登录不成功");
             loading.dismiss();
@@ -65,10 +65,13 @@ export class LoginPage extends BaseUI {
         error => {
           this.errorMessage = <any>error;
         }
-        
+
       );
   }
   dismiss() {
     this.viewCtrl.dismiss();
+  }
+  regist() {
+    this.navCtrl.push(RegistPage);
   }
 }
