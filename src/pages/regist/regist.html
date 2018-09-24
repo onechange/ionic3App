@@ -22,7 +22,7 @@
     </ion-item>
     <ion-item>
       <ion-label stacked>用户昵称</ion-label>
-      <ion-input type="password" [(ngModel)]="password"></ion-input>
+      <ion-input type="text" [(ngModel)]="nickname"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label stacked>输入密码</ion-label>
@@ -30,10 +30,11 @@
     </ion-item>
     <ion-item>
       <ion-label stacked>确认密码</ion-label>
-      <ion-input type="password" [(ngModel)]="password"></ion-input>
+      <ion-input type="password" [(ngModel)]="checkpassword"></ion-input>
     </ion-item>
   </ion-list>
   <div padding>
-    <button ion-button block (click)="login()">注 册</button>
+    <button ion-button block (click)="reigst()">注 册</button>
   </div>
+    
 </ion-content>

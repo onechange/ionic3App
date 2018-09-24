@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, LoadingController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { Storage } from '@ionic/storage';
+import { BaseUI } from '../../common/baseui';
 /**
  * Generated class for the MorePage page.
  *
@@ -14,16 +15,19 @@ import { Storage } from '@ionic/storage';
   selector: 'page-more',
   templateUrl: 'more.html',
 })
-export class MorePage {
+export class MorePage extends BaseUI{
   //判断用户是否登录标志位
   public isLogin: boolean = false;
+  headface:any;
+  userinfo:string[];
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public modalCtrl: ModalController,
-    private storage: Storage
+    private storage: Storage,
+    public loadingCtrl: LoadingController
     ) {
-
+      super();
   }
 
   loginModal() {
@@ -36,9 +40,12 @@ export class MorePage {
   loadUserPage(){
     this.storage.get('UserId').then((val) => {
       if(val!=null){
+        // 加载用户数据
+        var loading = super.showLoading(this.loadingCtrl,"加载中...");
         
+        this.isLogin = true;
       }else{
-
+        this.isLogin = false;
       }
     });
   }
