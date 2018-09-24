@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ModalController, LoadingController
 import { LoginPage } from '../login/login';
 import { Storage } from '@ionic/storage';
 import { BaseUI } from '../../common/baseui';
+import { RestProvider } from '../../providers/rest/rest';
 /**
  * Generated class for the MorePage page.
  *
@@ -25,7 +26,8 @@ export class MorePage extends BaseUI{
     public navParams: NavParams,
     public modalCtrl: ModalController,
     private storage: Storage,
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
+    public rest: RestProvider
     ) {
       super();
   }
@@ -42,7 +44,12 @@ export class MorePage extends BaseUI{
       if(val!=null){
         // 加载用户数据
         var loading = super.showLoading(this.loadingCtrl,"加载中...");
-        
+        this.rest.getUserInfo(val)
+        .subscribe(
+          userinfo => {
+            
+          }
+        );
         this.isLogin = true;
       }else{
         this.isLogin = false;
