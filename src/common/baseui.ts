@@ -6,6 +6,7 @@ export abstract class BaseUI {
   }
   protected showLoading(loadingCtrl: LoadingController, message: string): Loading {
     let loader = loadingCtrl.create({
+      
       content: message,
       dismissOnPageChange: true
     });

@@ -15,9 +15,13 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RegistPage } from '../pages/regist/regist';
+import { UserPage } from '../pages/user/user';
+import { HeadfacePage } from '../pages/headface/headface';
 
 //service
 import { RestProvider } from '../providers/rest/rest';
+
+
 
 
 @NgModule({
@@ -30,7 +34,9 @@ import { RestProvider } from '../providers/rest/rest';
     MorePage,
     TabsPage,
     LoginPage,
-    RegistPage
+    RegistPage,
+    UserPage,
+    HeadfacePage
   ],
   imports: [
     HttpClientModule,
@@ -50,7 +56,9 @@ import { RestProvider } from '../providers/rest/rest';
     MorePage,
     TabsPage,
     LoginPage,
-    RegistPage
+    RegistPage,
+    UserPage,
+    HeadfacePage
   ],
   providers: [
     StatusBar,

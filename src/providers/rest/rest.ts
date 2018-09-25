@@ -45,7 +45,13 @@ export class RestProvider {
     return this.getUrlReturn(this.apiUrlRegister + "?mobile=" + mobile + "&nickname=" + nickname + "&password=" + password);
   }
 
-
+  getUserInfo(userId):Observable<string[]> {
+    return this.getUrlReturn(this.apiUrlUserInfo +"?userId="+userId);
+     
+  }
+  updateUserNickname(userId,nickname):Observable<string[]>{
+    return this.getUrlReturn(this.apiUrlUpdateNickName + "?userId="+userId +"&nickname=" + nickname);
+  }
   /**
    *全局获取http请求
    * @cwang 2018/9/16
@@ -58,7 +64,6 @@ export class RestProvider {
     return this.http.get(url)
       .map(this.extraData)
       .catch(this.handleError);
-
   }
 
   private extraData(res: string) {

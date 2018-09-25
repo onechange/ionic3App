@@ -58,7 +58,7 @@ export class RegistPage extends BaseUI {
           error => this.errorMessage = <any>error );
     }
 
-  }
+  } 
   dismiss() {
     this.vc.dismiss();
   }
