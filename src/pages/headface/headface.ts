@@ -79,7 +79,7 @@ export class HeadfacePage extends BaseUI{
       //适配安卓
       if(this.platform.is('android') && sourceType === this.camera.PictureSourceType.PHOTOLIBRARY){
         this.filePath.resolveNativePath(imagePath)
-        .then(filepath=>{ 
+        .then(filepath =>{ 
           //获取正确路径
           let correctPath = filepath.substr(0,filepath.lastIndexOf('/')+ 1);
           //获取文件名
@@ -107,7 +107,20 @@ export class HeadfacePage extends BaseUI{
     (error)=>{
       super.presentToast(this.toastCtrl,"存储图片到本地图库出现错误");
     }
-    )
-    
+    );
+  }
+  //为文件生成一个新文件名
+  createFileName(){
+      var d = new Date(),
+          n = d.getTime(),
+          newFilename = n + '.jpg';
+      return newFilename
+  }
+  pathForImage(img){
+    if (img === null){
+      return '';
+    }else{
+      return cordova.file.dataDirectory + img ;
+    }
   }
 }
