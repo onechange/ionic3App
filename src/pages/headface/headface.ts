@@ -1,23 +1,20 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController, Platform, ToastController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { FilePath } from '@ionic-native/file-path';
-/**
- * Generated class for the HeadfacePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { BaseUI } from '../../common/baseui';
+
+declare var cordova:any; //导入第三方库
 
 @IonicPage()
 @Component({
   selector: 'page-headface',
   templateUrl: 'headface.html',
 })
-export class HeadfacePage {
+export class HeadfacePage extends BaseUI{
   userId:string;
   errorMessage:string;
   lastImage:string = null;
@@ -30,8 +27,10 @@ export class HeadfacePage {
     private file: File,
     public platform: Platform,
     private transfer: FileTransfer,
-    private filePath:FilePath
+    private filePath:FilePath,
+    public toastCtrl:ToastController
     ) {
+      super();
   }
 
   ionViewDidLoad() {
@@ -85,11 +84,30 @@ export class HeadfacePage {
           let correctPath = filepath.substr(0,filepath.lastIndexOf('/')+ 1);
           //获取文件名
           let currentName = imagePath.substring(imagePath.lastIndexOf('/'),imagePath.lastIndexOf('?'));
-          this.copyFileToLocalDir(correctPath.)
+          this.copyFileToLocalDir(correctPath,currentName,this.createFileName());
         });
+      }else{
+        //获取正确路径
+        let correctPath = imagePath.substr(0,imagePath.lastIndexOf('/')+ 1);
+        //获取文件名
+        let currentName = imagePath.substr(imagePath.lastIndexOf('/'));
       }
+    },
+    (error) => {
+      super.presentToast(this.toastCtrl,"选择图片错误,请检查相关权限");
+
     });
   }
-
-
+  
+  copyFileToLocalDir(namePath,currentName,newFilename){
+    this.file.copyFile(namePath,currentName,cordova.file.dataDirectory,newFilename).then((success) =>{
+      this.lastImage = newFilename;
+  
+    },
+    (error)=>{
+      super.presentToast(this.toastCtrl,"存储图片到本地图库出现错误");
+    }
+    )
+    
+  }
 }
