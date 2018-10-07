@@ -21,7 +21,11 @@ import { HeadfacePage } from '../pages/headface/headface';
 //service
 import { RestProvider } from '../providers/rest/rest';
 
-
+//plugins
+import { Camera } from '@ionic-native/camera';
+import { File } from '@ionic-native/file';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { FilePath } from '@ionic-native/file-path';
 
 
 @NgModule({
@@ -65,6 +69,12 @@ import { RestProvider } from '../providers/rest/rest';
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     RestProvider,
+    Camera,
+    File,
+    FileTransfer,
+    FileTransferObject,
+    FilePath,
+    
   ]
 })
 export class AppModule { }
