@@ -26,6 +26,7 @@ import { Camera } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { FilePath } from '@ionic-native/file-path';
+import { QuestionPage } from '../pages/question/question';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { FilePath } from '@ionic-native/file-path';
     LoginPage,
     RegistPage,
     UserPage,
-    HeadfacePage
+    HeadfacePage,
+    QuestionPage
   ],
   imports: [
     HttpClientModule,
@@ -62,7 +64,8 @@ import { FilePath } from '@ionic-native/file-path';
     LoginPage,
     RegistPage,
     UserPage,
-    HeadfacePage
+    HeadfacePage,
+    QuestionPage
   ],
   providers: [
     StatusBar,
