@@ -45,12 +45,16 @@ export class RestProvider {
     return this.getUrlReturn(this.apiUrlRegister + "?mobile=" + mobile + "&nickname=" + nickname + "&password=" + password);
   }
 
-  getUserInfo(userId):Observable<string[]> {
-    return this.getUrlReturn(this.apiUrlUserInfo +"?userId="+userId);
-     
+  getUserInfo(userId): Observable<string[]> {
+    return this.getUrlReturn(this.apiUrlUserInfo + "?userId=" + userId);
+
   }
-  updateUserNickname(userId,nickname):Observable<string[]>{
-    return this.getUrlReturn(this.apiUrlUpdateNickName + "?userId="+userId +"&nickname=" + nickname);
+  updateUserNickname(userId, nickname): Observable<string[]> {
+    return this.getUrlReturn(this.apiUrlUpdateNickName + "?userId=" + userId + "&nickname=" + nickname);
+  }
+
+  saveQuestion(userId, title, content): Observable<string[]> {
+    return this.getUrlReturn(this.apiUrlQuestionSave + "?userid=" + userId + "&title=" + title + "&content=" + content);
   }
   /**
    *全局获取http请求
