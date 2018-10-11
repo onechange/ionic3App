@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Response } from '@angular/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable, ObservableInput } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 /*
@@ -56,6 +56,11 @@ export class RestProvider {
   saveQuestion(userId, title, content): Observable<string[]> {
     return this.getUrlReturn(this.apiUrlQuestionSave + "?userid=" + userId + "&title=" + title + "&content=" + content);
   }
+
+  getFeeds():Observable<string[]> {
+    return this.getUrlReturn(this.apiUrlFeeds);
+  }
+  
   /**
    *全局获取http请求
    * @cwang 2018/9/16
