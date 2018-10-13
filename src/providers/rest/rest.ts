@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 /*
   Generated class for the RestProvider provider.
-
+  
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */

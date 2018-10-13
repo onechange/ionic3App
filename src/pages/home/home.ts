@@ -3,6 +3,7 @@ import { NavController, ModalController ,Tabs, LoadingController} from 'ionic-an
 import { QuestionPage } from '../question/question';
 import { BaseUI } from '../../common/baseui';
 import { RestProvider } from '../../providers/rest/rest';
+import { DetailsPage } from '../details/details';
 
 @Component({
   selector: 'page-home',
@@ -43,5 +44,9 @@ export class HomePage extends BaseUI{
     },
     error => this.errorMsg = <any>error
     );
+  }
+
+  goToDetial(){
+    this.navCtrl.push(DetailsPage);
   }
 }

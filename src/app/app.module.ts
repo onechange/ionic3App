@@ -27,6 +27,7 @@ import { File } from '@ionic-native/file';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { QuestionPage } from '../pages/question/question';
+import { DetailsPage } from '../pages/details/details';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { QuestionPage } from '../pages/question/question';
     RegistPage,
     UserPage,
     HeadfacePage,
-    QuestionPage
+    QuestionPage,
+    DetailsPage
   ],
   imports: [
     HttpClientModule,
@@ -65,7 +67,8 @@ import { QuestionPage } from '../pages/question/question';
     RegistPage,
     UserPage,
     HeadfacePage,
-    QuestionPage
+    QuestionPage,
+    DetailsPage
   ],
   providers: [
     StatusBar,

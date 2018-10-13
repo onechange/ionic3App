@@ -31,23 +31,23 @@
       </ion-row>
     </ion-grid>
   </div>
-  <ion-card>
+  <ion-card *ngFor="let f of feeds" (click)="goToDetial()">
     <ion-item>
       <ion-avatar item-start>
-        <img src="">
+        <img src="{{f.HeadFace}}">
       </ion-avatar>
-      <p>麦加蒂斯回答了问题
+      <p>{{f.UserNickName}}回答了问题
         <ion-icon class="more_button" name="ios-more"></ion-icon>
       </p>
     </ion-item>
-    <h2>文章标题</h2>
+    <h2>{{f.ContentTitle}}</h2>
     <ion-card-content>
-      <p>文章内容</p>
+      <p>{{f.ContentSummary}}</p>
     </ion-card-content>
     <ion-row>
       <ion-col col-8 center text-left>
         <ion-note>
-          100&nbsp;赞同&nbsp;&nbsp;•20&nbsp;评论&nbsp;&nbsp;•关注问题
+          {{f.LikeCount}}&nbsp;赞同&nbsp;&nbsp;•{{f.CommentCount}}&nbsp;评论&nbsp;&nbsp;•&nbsp;关注问题
         </ion-note>
       </ion-col>
       <ion-col col-4></ion-col>
