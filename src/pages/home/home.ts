@@ -11,6 +11,7 @@ import { DetailsPage } from '../details/details';
 })
 export class HomePage extends BaseUI{
   feeds:string[];
+
   errorMsg: string;
   constructor(
     public navCtrl: NavController,
@@ -46,7 +47,7 @@ export class HomePage extends BaseUI{
     );
   }
 
-  goToDetial(){
-    this.navCtrl.push(DetailsPage);
+  goToDetial(questionid){
+    this.navCtrl.push(DetailsPage,{id:questionid});
   }
 }

@@ -6,7 +6,7 @@ page-details {
     box-shadow: none;
   }
   .card-content {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
   .button-default{
     height: 1.8rem;
@@ -14,5 +14,8 @@ page-details {
     float: right;
     display: block;
     margin-bottom: 10px;
+  }
+  .card p {
+    margin-top: 10px;
   }
 }
