@@ -21,6 +21,8 @@ export class DetailsPage extends BaseUI {
   question:string[];
   answers:string[];
   errorMessage:any;
+  isFavourite:boolean;
+  isMyQuestion:boolean;
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -41,7 +43,35 @@ export class DetailsPage extends BaseUI {
     this.storage.get('UserId').then(val => {
         if (val!=null){
           this.userId = val;
+          var loading = this.showLoading(this.loadingCtrl,"加载中...");
+          this.rest.getQuestionWithUser(id,val)
+            .subscribe(
+              q => {
+                this.question = q;
+                this.answers = q["Answers"];
+                this.isFavourite = q["IsFavourite"];
+                this.isMyQuestion = (q["OwnUserId"] == this.userId);
+                loading.dismissAll();
+              },
+              error => this.errorMessage = <any>error 
+            );
         }
     });
+  }
+  saveFavourite(){
+    // var loading = super.presentToast(this.toastCtrl,"请求中...");
+    this.rest.saveFavourite(this.id, this.userId)
+      .subscribe(
+        f => {
+          if (f["Status"] == "OK") {
+            super.presentToast(this.toastCtrl, this.isFavourite ? "取消关注成功." : "关注问题成功.");
+            this.isFavourite = !this.isFavourite;
+          }
+        },
+        error => this.errorMessage = <any>error);
+  }  
+
+  showAnswerPage() {
+    
   }
 }

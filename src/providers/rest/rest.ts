@@ -60,7 +60,14 @@ export class RestProvider {
   getFeeds():Observable<string[]> {
     return this.getUrlReturn(this.apiUrlFeeds);
   }
-  
+  getQuestionWithUser(questionId,userId): Observable<string[]> {
+    return this.getUrlReturn(this.apiUrlGetQuestionWithUser + "?id=" + questionId + "&userid=" + userId);
+  }
+
+  saveFavourite(questionId,userId):Observable <string[]> {
+    return this.getUrlReturn(this.apiUrlSaveFavourite + "?questionid=" + questionId + "&userid=" + userId);
+  }
+
   /**
    *全局获取http请求
    * @cwang 2018/9/16
