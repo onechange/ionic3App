@@ -29,13 +29,13 @@
   <ion-card *ngFor="let answer of answers">
     <ion-item>
       <ion-avatar item-start>
-        <img src="{{a.HeadFace}}">
+        <img src="{{answer.HeadFace}}">
       </ion-avatar>
-      <p>{{a.UserNickName}}</p>
+      <p>{{answer.UserNickName}}</p>
     </ion-item>
     <ion-card-content>
-      <p>{{a.Content}}</p>
-      <p class="answer_date"style="float:right;">{{a.CreateDateTime}}</p>
+      <p>{{answer.Content}}</p>
+      <p class="answer_date"style="float:right;">{{answer.CreateDateTime}}</p>
     </ion-card-content>
   </ion-card>
 </ion-content>

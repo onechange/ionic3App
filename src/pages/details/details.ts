@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, LoadingController, ModalController
 import { RestProvider } from '../../providers/rest/rest';
 import {Storage} from '@ionic/storage'
 import { BaseUI } from '../../common/baseui';
+import { AnswerPage } from '../answer/answer';
 /**
  * Generated class for the DetailsPage page.
  *
@@ -23,7 +24,7 @@ export class DetailsPage extends BaseUI {
   errorMessage:any;
   isFavourite:boolean;
   isMyQuestion:boolean;
-  constructor(
+  constructor (
     public navCtrl: NavController, 
     public navParams: NavParams,
     public loadingCtrl: LoadingController,
@@ -43,7 +44,7 @@ export class DetailsPage extends BaseUI {
     this.storage.get('UserId').then(val => {
         if (val!=null){
           this.userId = val;
-          var loading = this.showLoading(this.loadingCtrl,"加载中...");
+          var loading = super.showLoading(this.loadingCtrl,"加载中...");
           this.rest.getQuestionWithUser(id,val)
             .subscribe(
               q => {
@@ -72,6 +73,11 @@ export class DetailsPage extends BaseUI {
   }  
 
   showAnswerPage() {
-    
+    let modal = this.modalCtrl.create(AnswerPage,{"id":this.id});
+    //关闭后的回调
+    modal.onDidDismiss(() => {
+      this.loadQuestion(this.id);
+    });
+    modal.present();
   }
 }

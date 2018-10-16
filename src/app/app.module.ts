@@ -28,6 +28,7 @@ import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-nati
 import { FilePath } from '@ionic-native/file-path';
 import { QuestionPage } from '../pages/question/question';
 import { DetailsPage } from '../pages/details/details';
+import { AnswerPage } from '../pages/answer/answer';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { DetailsPage } from '../pages/details/details';
     UserPage,
     HeadfacePage,
     QuestionPage,
-    DetailsPage
+    DetailsPage,
+    AnswerPage
   ],
   imports: [
     HttpClientModule,
@@ -68,7 +70,8 @@ import { DetailsPage } from '../pages/details/details';
     UserPage,
     HeadfacePage,
     QuestionPage,
-    DetailsPage
+    DetailsPage,
+    AnswerPage
   ],
   providers: [
     StatusBar,
