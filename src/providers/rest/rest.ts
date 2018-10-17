@@ -70,6 +70,9 @@ export class RestProvider {
   answer(userId,questionId,content):Observable <string[]> {
     return this.getUrlReturn(this.apiUrlAnswer + "?userid=" + userId + "&questionid=" + questionId + "&content=" + content);
   }
+  getQuestions():Observable<string[]> {
+    return this.getUrlReturn(this.apiUrlQuestionList);
+  }
   /**
    *全局获取http请求
    * @cwang 2018/9/16
