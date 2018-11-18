@@ -29,6 +29,7 @@ import { FilePath } from '@ionic-native/file-path';
 import { QuestionPage } from '../pages/question/question';
 import { DetailsPage } from '../pages/details/details';
 import { AnswerPage } from '../pages/answer/answer';
+import { ChatdetailsPage } from '../pages/chatdetails/chatdetails';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { AnswerPage } from '../pages/answer/answer';
     HeadfacePage,
     QuestionPage,
     DetailsPage,
-    AnswerPage
+    AnswerPage,
+    ChatdetailsPage
   ],
   imports: [
     HttpClientModule,
@@ -71,7 +73,8 @@ import { AnswerPage } from '../pages/answer/answer';
     HeadfacePage,
     QuestionPage,
     DetailsPage,
-    AnswerPage
+    AnswerPage,
+    ChatdetailsPage
   ],
   providers: [
     StatusBar,
