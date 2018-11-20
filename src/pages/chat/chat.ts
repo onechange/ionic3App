@@ -28,4 +28,5 @@ export class ChatPage {
     console.log('ionViewDidLoad ChatPage');
   }
 
+  
 }

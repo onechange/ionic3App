@@ -29,11 +29,11 @@
   </div>
 </ion-content>
 
-<ion-footer no-border style="height: 55px;">
+<ion-footer no-border [style.height]="isOpenEmojiPicker ? '255px' : '55px'">
   <ion-grid class="input-wrap">
     <ion-row>
       <ion-col col-2>
-        <button ion-button clear ion-only item-right>
+        <button ion-button clear ion-only item-right (click)="switchEmojiPicker()">
           <ion-icon name="md-happy"></ion-icon>
         </button>
       </ion-col>
@@ -41,7 +41,6 @@
         <ion-textarea
         placeholder="输入内容"
         >
-
         </ion-textarea>
       </ion-col>
       <ion-col col-2>
@@ -51,4 +50,5 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+  <emojipicker *ngIf="isOpenEmojiPicker" [(ngModel)]="editorMessage"></emojipicker>
 </ion-footer>

@@ -15,13 +15,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ChatdetailsPage {
   chatUserName: string;
+  isOpenEmojiPicker = false;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.chatUserName = navParams.get('username')
   }
   
   ionViewDidLoad() {
-    
     console.log('ionViewDidLoad ChatdetailsPage');
   }
-
+  switchEmojiPicker() {
+    this.isOpenEmojiPicker = !this.isOpenEmojiPicker;
+  }
 }

@@ -20,7 +20,7 @@ import { HeadfacePage } from '../pages/headface/headface';
 
 //service
 import { RestProvider } from '../providers/rest/rest';
-
+import { ComponentsModule } from '../components/components.module';
 //plugins
 import { Camera } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
@@ -30,6 +30,8 @@ import { QuestionPage } from '../pages/question/question';
 import { DetailsPage } from '../pages/details/details';
 import { AnswerPage } from '../pages/answer/answer';
 import { ChatdetailsPage } from '../pages/chatdetails/chatdetails';
+import { EmojiProvider } from '../providers/emoji/emoji';
+import { ChatserviceProvider } from '../providers/chatservice/chatservice';
 
 
 @NgModule({
@@ -56,7 +58,8 @@ import { ChatdetailsPage } from '../pages/chatdetails/chatdetails';
     IonicModule.forRoot(MyApp,{
       backButtonText: '返回'
     }),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    ComponentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -86,6 +89,8 @@ import { ChatdetailsPage } from '../pages/chatdetails/chatdetails';
     FileTransfer,
     FileTransferObject,
     FilePath,
+    EmojiProvider,
+    ChatserviceProvider,
     
   ]
 })
