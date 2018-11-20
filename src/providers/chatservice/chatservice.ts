@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Events } from 'ionic-angular';
 
@@ -23,18 +23,20 @@ export class UserInfo {
 @Injectable()
 export class ChatserviceProvider {
 
-  constructor(public http: HttpClient,
+  constructor(public http: Http,
               public event: Events
     ) {
 
   }
 
   getMessageList(): Promise<ChatMessage[]> {
-    const url = '../assets/mock/msg-list.json';
+    const url = '../../assets/mock/msg-list.json';
     return this.http.get(url)
-      .toPromise()
-      .then(response => response.json().array as ChatMessage[])
-      .catch(error => Promise.reject(error || '错误信息'));
+          .toPromise()
+          .then(res => res.json().array as ChatMessage[])
+          .catch(error => Promise.reject(error || '错误信息')
+          );
+
   }
   sendMessage(message: ChatMessage) {
     return new Promise(resolve => setTimeout(() => {

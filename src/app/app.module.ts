@@ -32,6 +32,7 @@ import { AnswerPage } from '../pages/answer/answer';
 import { ChatdetailsPage } from '../pages/chatdetails/chatdetails';
 import { EmojiProvider } from '../providers/emoji/emoji';
 import { ChatserviceProvider } from '../providers/chatservice/chatservice';
+import { HttpModule } from '@angular/http';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { ChatserviceProvider } from '../providers/chatservice/chatservice';
       backButtonText: '返回'
     }),
     IonicStorageModule.forRoot(),
-    ComponentsModule
+    ComponentsModule,
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -91,7 +93,6 @@ import { ChatserviceProvider } from '../providers/chatservice/chatservice';
     FilePath,
     EmojiProvider,
     ChatserviceProvider,
-    
   ]
 })
 export class AppModule { }

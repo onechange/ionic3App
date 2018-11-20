@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ChatserviceProvider, ChatMessage } from '../../providers/chatservice/chatservice';
 
 /**
  * Generated class for the ChatdetailsPage page.
@@ -16,12 +17,30 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class ChatdetailsPage {
   chatUserName: string;
   isOpenEmojiPicker = false;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  messageList: ChatMessage[] = [];
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private chatService: ChatserviceProvider
+  ) {
     this.chatUserName = navParams.get('username')
   }
-  
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ChatdetailsPage');
+  getMessage() {
+    return this.chatService.getMessageList()
+      .then((result) => {
+        this.messageList = result;
+      }).catch((err) => {
+        console.error(err);
+      });
+  }
+  ionViewDidEnter() {
+    this.getMessage()
+    .then(() => {
+      this.scrollToBottom();
+    });
+  }
+  scrollToBottom(): any {
+
   }
   switchEmojiPicker() {
     this.isOpenEmojiPicker = !this.isOpenEmojiPicker;

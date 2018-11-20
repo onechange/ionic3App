@@ -15,14 +15,14 @@
 
 <ion-content>
   <div class="message-wrap">
-    <div class="message left">
-      <img src="" class="user-img">
+    <div class="message left" *ngFor="let m of messageList">
+      <img [src] = "m.userImgUrl" class="user-img">
       <div class="msg-detail">
         <div class="msg-info">
-          <p>Parry&nbsp;1分钟前</p>
+          <p>{{m.username}}&nbsp;{{m.time}}</p>
         </div>
         <div class="msg-content">
-          <p class="line-breaker">消息内容</p>
+          <p class="line-breaker">{{m.message}}</p>
         </div>
       </div>
     </div>
