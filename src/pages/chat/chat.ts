@@ -18,7 +18,7 @@ export class ChatPage {
   chatdetailspage: any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.userinfo = {
-      userid: '1112224',
+      userid: '123321',
       username: '客服222'
     }
     this.chatdetailspage = ChatdetailsPage;

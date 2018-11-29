@@ -12,7 +12,6 @@ export class ChatMessage {
   time: number | string;
   message: string;
   status: string;
-
 }
 export class UserInfo {
   userId: string;
@@ -26,7 +25,7 @@ export class ChatserviceProvider {
   constructor(public http: Http,
               public event: Events
     ) {
-
+      
   }
 
   getMessageList(): Promise<ChatMessage[]> {
