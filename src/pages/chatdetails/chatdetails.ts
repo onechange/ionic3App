@@ -20,7 +20,7 @@ export class ChatdetailsPage {
   userName: string;
   userImgUrl: string;
   errorMessage: any;
-  editerMessage: string;
+  editorMessage: string;
   @ViewChild(Content) content:Content;
   @ViewChild('chatInput') messageInput:TextInput;
   constructor(
@@ -61,11 +61,11 @@ export class ChatdetailsPage {
     .then(() => {
       this.scrollToBottom();
     });
+    //听取消息的发布,订阅
     this.event.subscribe('chat.received',(msg,time) =>{
       this.messageList.push(msg);
       this.scrollToBottom();
     })
-
 
   }
   scrollToBottom(): any {
@@ -80,7 +80,7 @@ export class ChatdetailsPage {
   }
 
   sendMessage(message: ChatMessage){
-    if(this.editerMessage.trim())
+    if(!this.editorMessage.trim())
     return;
     const id = Date.now().toString();
     let messageSend: ChatMessage = {
@@ -90,12 +90,12 @@ export class ChatdetailsPage {
       userImgUrl: this.userImgUrl,
       toUserId: this.chatUserId,//发送给谁
       time: Date.now(),
-      message: this.editerMessage,
+      message: this.editorMessage,
       status: 'pending'
     }
     this.messageList.push(messageSend);
     this.scrollToBottom();
-    this.editerMessage = '';
+    this.editorMessage = '';
     if(!this.isOpenEmojiPicker){
       this.messageInput.setFocus();
     }
@@ -120,4 +120,9 @@ export class ChatdetailsPage {
       e => e.messageId === id
     );
   }
+  ionViewWillLeave() {
+    //消息事件取消订阅
+    this.event.unsubscribe('chat.received');
+  }
+  
 }

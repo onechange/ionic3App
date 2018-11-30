@@ -14,10 +14,11 @@
     [class.left]="m.userId === chatUserId"
     [class.right]="m.userId === userId"
     >
-      <img [src] = "m.userImgUrl" class="user-img">       
+      <img [src] = "m.userImgUrl" class="user-img">    
+      <ion-spinner name="dots" *ngIf="m.status === 'pending'"></ion-spinner>
       <div class="msg-detail">
         <div class="msg-info">
-          <p>{{m.username}}&nbsp;{{m.time}}</p>
+          <p>{{m.username}}&nbsp;{{m.time | relativetime}}</p>
         </div>
         <div class="msg-content">
           <p class="line-breaker">{{m.message}}</p>
@@ -38,7 +39,7 @@
       <ion-col col-8>
         <ion-textarea
         #chatInput
-        [(ngModel)]="editorMessage"
+        [(ngModel)]="editorMessage"    
         (keyup.enter)="sendMessage()"
         (focus)="focus()"
         placeholder="输入内容"
