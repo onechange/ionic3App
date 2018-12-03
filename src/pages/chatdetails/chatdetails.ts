@@ -61,11 +61,11 @@ export class ChatdetailsPage {
     .then(() => {
       this.scrollToBottom();
     });
+    //听取消息的发布,订阅
     this.event.subscribe('chat.received',(msg,time) =>{
       this.messageList.push(msg);
       this.scrollToBottom();
     })
-
 
   }
   scrollToBottom(): any {
@@ -120,4 +120,9 @@ export class ChatdetailsPage {
       e => e.messageId === id
     );
   }
+  ionViewWillLeave() {
+    //消息事件取消订阅
+    this.event.unsubscribe('chat.received');
+  }
+  
 }

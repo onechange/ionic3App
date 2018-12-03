@@ -33,7 +33,7 @@ import { ChatdetailsPage } from '../pages/chatdetails/chatdetails';
 import { EmojiProvider } from '../providers/emoji/emoji';
 import { ChatserviceProvider } from '../providers/chatservice/chatservice';
 import { HttpModule } from '@angular/http';
-
+import { RelativetimePipe } from "../pipes/relativetime/relativetime"
 
 @NgModule({
   declarations: [
@@ -51,12 +51,13 @@ import { HttpModule } from '@angular/http';
     QuestionPage,
     DetailsPage,
     AnswerPage,
-    ChatdetailsPage
+    ChatdetailsPage,
+    RelativetimePipe
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
-    IonicModule.forRoot(MyApp,{
+    IonicModule.forRoot(MyApp, {
       backButtonText: '返回'
     }),
     IonicStorageModule.forRoot(),
