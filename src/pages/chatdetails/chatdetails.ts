@@ -20,7 +20,7 @@ export class ChatdetailsPage {
   userName: string;
   userImgUrl: string;
   errorMessage: any;
-  editerMessage: string;
+  editorMessage: string;
   @ViewChild(Content) content:Content;
   @ViewChild('chatInput') messageInput:TextInput;
   constructor(
@@ -80,7 +80,7 @@ export class ChatdetailsPage {
   }
 
   sendMessage(message: ChatMessage){
-    if(this.editerMessage.trim())
+    if(!this.editorMessage.trim())
     return;
     const id = Date.now().toString();
     let messageSend: ChatMessage = {
@@ -90,12 +90,12 @@ export class ChatdetailsPage {
       userImgUrl: this.userImgUrl,
       toUserId: this.chatUserId,//发送给谁
       time: Date.now(),
-      message: this.editerMessage,
+      message: this.editorMessage,
       status: 'pending'
     }
     this.messageList.push(messageSend);
     this.scrollToBottom();
-    this.editerMessage = '';
+    this.editorMessage = '';
     if(!this.isOpenEmojiPicker){
       this.messageInput.setFocus();
     }

@@ -7,12 +7,20 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>notification</ion-title>
+    <ion-title>发现</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-list>
+    <ion-item *ngFor="let n of notificationList" (click)="gotoDetails(n.QuestionId)">
+      <ion-avatar item-left>
+        <img src="{{n.HeadFace}}" alt="">
+      </ion-avatar>
+      <h2>{{n.NotifaicationTitle}}</h2>
+      <p>{{n.NotifaicationMessage}}</p>
+    </ion-item>
+  </ion-list>
 </ion-content>

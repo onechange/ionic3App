@@ -68,6 +68,10 @@ export class RestProvider {
   getQuestions():Observable<string[]> {
     return this.getUrlReturn(this.apiUrlQuestionList);
   }
+  //获取通知消息
+  getUserNotifications(userId): Observable <string[]>{
+    return this.getUserNotifications(this.apiUrlUserNotifications + "?userid=" + userId);
+  }
   /**
    *全局获取http请求
    * @cwang 2018/9/16
