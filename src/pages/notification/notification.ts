@@ -4,12 +4,6 @@ import { Storage} from '@ionic/storage';
 import { RestProvider } from '../../providers/rest/rest';
 import { BaseUI } from '../../common/baseui';
 import { DetailsPage } from '../details/details';
-/**
- * Generated class for the NotificationPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
