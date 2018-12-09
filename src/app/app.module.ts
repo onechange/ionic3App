@@ -34,6 +34,7 @@ import { EmojiProvider } from '../providers/emoji/emoji';
 import { ChatserviceProvider } from '../providers/chatservice/chatservice';
 import { HttpModule } from '@angular/http';
 import { RelativetimePipe } from "../pipes/relativetime/relativetime"
+import { UserdatalistPage } from '../pages/userdatalist/userdatalist';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { RelativetimePipe } from "../pipes/relativetime/relativetime"
     DetailsPage,
     AnswerPage,
     ChatdetailsPage,
-    RelativetimePipe
+    RelativetimePipe,
+    UserdatalistPage,
   ],
   imports: [
     HttpClientModule,
@@ -80,7 +82,8 @@ import { RelativetimePipe } from "../pipes/relativetime/relativetime"
     QuestionPage,
     DetailsPage,
     AnswerPage,
-    ChatdetailsPage
+    ChatdetailsPage,
+    UserdatalistPage
   ],
   providers: [
     StatusBar,
